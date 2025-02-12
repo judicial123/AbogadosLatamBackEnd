@@ -10,5 +10,7 @@ public class ApplicationMappingProfile: Profile
         CreateMap<Pais, PaisEntity>().ReverseMap();
         CreateMap<Ciudad, CiudadEntity>().ReverseMap();
         CreateMap<Especialidad, EspecialidadEntity>().ReverseMap();
+        CreateMap<Estudio, EstudioEntity>().ReverseMap();
+
     }
 }

@@ -77,6 +77,37 @@ namespace AbogadosLatam.DataSore.MSSQL.Migrations
                     b.ToTable("Especialidades");
                 });
 
+            modelBuilder.Entity("AbogadosLatam.DataSore.MSSQL.Model.EstudioEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LogoUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Estudios");
+                });
+
             modelBuilder.Entity("AbogadosLatam.DataSore.MSSQL.Model.PaisEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -126,8 +157,8 @@ namespace AbogadosLatam.DataSore.MSSQL.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2025, 2, 11, 16, 18, 19, 380, DateTimeKind.Local).AddTicks(1890),
-                            DateModified = new DateTime(2025, 2, 11, 16, 18, 19, 380, DateTimeKind.Local).AddTicks(1930),
+                            DateCreated = new DateTime(2025, 2, 12, 6, 37, 58, 908, DateTimeKind.Local).AddTicks(5100),
+                            DateModified = new DateTime(2025, 2, 12, 6, 37, 58, 908, DateTimeKind.Local).AddTicks(5130),
                             Nombre = "Ecuador"
                         });
                 });

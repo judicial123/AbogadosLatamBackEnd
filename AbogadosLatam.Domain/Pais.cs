@@ -1,7 +1,8 @@
+using AbogadosLatam.Domain.Common;
+
 namespace AbogadosLatam.Domain;
 
-public class Pais
+public class Pais : BaseEntity
 {
-    public int Id { get; set; }
     public string Nombre { get; set; } = String.Empty;
 }

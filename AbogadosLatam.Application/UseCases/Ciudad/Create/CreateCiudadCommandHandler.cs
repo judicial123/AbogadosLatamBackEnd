@@ -15,10 +15,10 @@ namespace AbogadosLatam.Application.Features.UseCases.Ciudad
     public class CreateCiudadCommandHandler : IRequestHandler<CreateCiudadCommand, int>
     {
         private readonly IMapper _mapper;
-        private readonly ICiudadRepository _ciudadRepository;
-        private readonly IPaisRepository _paisRepository;
+        private readonly ICiudadCommandRepository _ciudadRepository;
+        private readonly IPaisQueryRepository _paisRepository;
 
-        public CreateCiudadCommandHandler(IMapper mapper, ICiudadRepository ciudadRepository, IPaisRepository paisRepository)
+        public CreateCiudadCommandHandler(IMapper mapper, ICiudadCommandRepository ciudadRepository, IPaisQueryRepository paisRepository)
         {
             _mapper = mapper;
             _ciudadRepository = ciudadRepository;

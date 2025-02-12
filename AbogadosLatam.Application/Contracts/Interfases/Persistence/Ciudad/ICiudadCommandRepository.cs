@@ -1,6 +1,8 @@
+using AbogadosLatam.Domain;
+
 namespace AbogadosLatam.Application.Contracts.Persistence;
 
-public interface ICiudadCommandRepository
+public interface ICiudadCommandRepository: ICommandRepository<Ciudad>
 {
     
 }

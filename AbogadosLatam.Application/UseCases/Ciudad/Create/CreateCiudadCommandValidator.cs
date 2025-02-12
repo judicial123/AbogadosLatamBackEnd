@@ -8,28 +8,22 @@ using AbogadosLatam.Application.Contracts;
 using AbogadosLatam.Application.Contracts.Persistence;
 using AbogadosLatam.Application.Features.UseCases.Ciudad;
 using AbogadosLatam.Application.Features.UseCases.Pais;
+using AbogadosLatam.Application.UseCases.Ciudad.Common;
 
 namespace HR.LeaveManagement.Application.DTOs.LeaveAllocation.Validators
 {
     public class CreateCiudadCommandValidator : AbstractValidator<CreateCiudadCommand>
     {
-        private readonly IPaisRepository _paisRepository;
+        private readonly IPaisQueryRepository _paisRepository;
 
-        public CreateCiudadCommandValidator(IPaisRepository paisRepository)
+        public CreateCiudadCommandValidator(IPaisQueryRepository paisRepository)
         {
             _paisRepository = paisRepository;
 
 
-            RuleFor(p => p.PaisId)
-                .GreaterThan(0)
-                .MustAsync(PaisMustExist)
-                .WithMessage("{PropertyName} does not exist.");
+           Include(new BaseCiudadCommandValidator(_paisRepository));
         }
 
-        private async Task<bool> PaisMustExist(int id, CancellationToken arg2)
-        {
-            var Pais = await _paisRepository.GetByIdAsync(id);
-            return Pais != null;
-        }
+       
     }
 }

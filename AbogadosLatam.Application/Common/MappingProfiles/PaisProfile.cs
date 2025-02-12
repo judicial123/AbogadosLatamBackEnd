@@ -5,9 +5,9 @@ using AutoMapper;
 
 namespace AbogadosLatam.Application.MappingProfiles;
 
-public class AutoMapperPais : Profile
+public class PaisProfile : Profile
 {
-    public AutoMapperPais()
+    public PaisProfile()
     {
         CreateMap<PaisDto, Pais>().ReverseMap();
         CreateMap<CreatePaisCommand, Pais>().ReverseMap();

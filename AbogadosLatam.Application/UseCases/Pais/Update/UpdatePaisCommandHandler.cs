@@ -9,19 +9,21 @@ namespace AbogadosLatam.Application.Features.UseCases.Pais
 {
     public class UpdatePaisCommandHandler : IRequestHandler<UpdatePaisCommand, Unit>
     {
-        private readonly IPaisRepository _paisRepository;
+        private readonly IPaisCommandRepository _paisRepository;
+        private readonly IPaisQueryRepository _paisQueryRepository;
         private readonly IMapper _mapper;
 
-        public UpdatePaisCommandHandler(IPaisRepository paisRepository, IMapper mapper)
+        public UpdatePaisCommandHandler(IPaisCommandRepository paisRepository, IPaisQueryRepository paisQueryRepository, IMapper mapper)
         {
             _paisRepository = paisRepository;
+            _paisQueryRepository = paisQueryRepository;
             _mapper = mapper;
         }
 
         public async Task<Unit> Handle(UpdatePaisCommand request, CancellationToken cancellationToken)
         {
             // Verifica si el país existe en la base de datos
-            var existingPais = await _paisRepository.GetByIdAsync(request.Id);
+            var existingPais = await _paisQueryRepository.GetByIdAsync(request.Id);
             if (existingPais == null)
             {
                 throw new KeyNotFoundException($"El país con ID {request.Id} no existe.");

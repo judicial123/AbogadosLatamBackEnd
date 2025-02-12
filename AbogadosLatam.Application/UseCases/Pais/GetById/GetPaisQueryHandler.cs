@@ -8,9 +8,9 @@ namespace AbogadosLatam.Application.Features.UseCases.Pais;
 public class GetPaisQueryHandler: IRequestHandler<GetPaisQuery,PaisDto>
 {
     private readonly IMapper _mapper;
-    private readonly IPaisRepository _paisRepository;
+    private readonly IPaisQueryRepository _paisRepository;
 
-    public GetPaisQueryHandler(IMapper mapper, IPaisRepository paisRepository)
+    public GetPaisQueryHandler(IMapper mapper, IPaisQueryRepository paisRepository)
     {
         this._mapper = mapper;
         this._paisRepository = paisRepository;

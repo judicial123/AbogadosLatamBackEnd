@@ -10,17 +10,19 @@ namespace AbogadosLatam.Application.Features.UseCases.Pais
 {
     public class DeletePaisCommandHandler : IRequestHandler<DeletePaisCommand, Unit>
     {
-        private readonly IPaisRepository _paisRepository;
+        private readonly IPaisCommandRepository _paisRepository;
+        private readonly IPaisQueryRepository _paisQueryRepository;
 
-        public DeletePaisCommandHandler(IPaisRepository paisRepository)
+        public DeletePaisCommandHandler(IPaisCommandRepository paisRepository, IPaisQueryRepository paisQueryRepository)
         {
             _paisRepository = paisRepository;
+            _paisQueryRepository = paisQueryRepository;
         }
 
         public async Task<Unit> Handle(DeletePaisCommand request, CancellationToken cancellationToken)
         {
             // Mapea los datos del comando a la entidad de dominio
-            var paisToDelete = await _paisRepository.GetByIdAsync(request.Id);
+            var paisToDelete = await _paisQueryRepository.GetByIdAsync(request.Id);
 
             if (paisToDelete == null)
                 throw new NotFoundException(nameof(Domain), request.Id);

@@ -8,17 +8,19 @@ namespace AbogadosLatam.Application.Features.UseCases.Ciudad
 {
     public class DeleteCiudadCommandHandler : IRequestHandler<DeleteCiudadCommand, Unit>
     {
-        private readonly ICiudadRepository _ciudadRepository;
+        private readonly ICiudadCommandRepository _ciudadRepository;
+        private readonly ICiudadQueryRepository _ciudadQueryRepository;
 
-        public DeleteCiudadCommandHandler(ICiudadRepository ciudadRepository)
+        public DeleteCiudadCommandHandler(ICiudadCommandRepository ciudadRepository, ICiudadQueryRepository ciudadQueryRepository)
         {
             _ciudadRepository = ciudadRepository;
+            _ciudadQueryRepository = ciudadQueryRepository;
         }
 
         public async Task<Unit> Handle(DeleteCiudadCommand request, CancellationToken cancellationToken)
         {
             // Intenta obtener la ciudad del repositorio
-            var ciudadToDelete = await _ciudadRepository.GetByIdAsync(request.Id);
+            var ciudadToDelete = await _ciudadQueryRepository.GetByIdAsync(request.Id);
 
             // Si la ciudad no existe, lanza una excepción
             if (ciudadToDelete == null)

@@ -9,9 +9,9 @@ namespace AbogadosLatam.Application.Features.UseCases.Ciudad
     public class GetCiudadQueryHandler : IRequestHandler<GetCiudadQuery, CiudadDto>
     {
         private readonly IMapper _mapper;
-        private readonly ICiudadRepository _ciudadRepository;
+        private readonly ICiudadQueryRepository _ciudadRepository;
 
-        public GetCiudadQueryHandler(IMapper mapper, ICiudadRepository ciudadRepository)
+        public GetCiudadQueryHandler(IMapper mapper, ICiudadQueryRepository ciudadRepository)
         {
             _mapper = mapper;
             _ciudadRepository = ciudadRepository;
@@ -20,7 +20,7 @@ namespace AbogadosLatam.Application.Features.UseCases.Ciudad
         public async Task<CiudadDto> Handle(GetCiudadQuery request, CancellationToken cancellationToken)
         {
             // Consulta a la base de datos
-            Domain.Ciudad ciudad = await _ciudadRepository.GetByIdAsync(request.Id);
+            Domain.Ciudad ciudad = await _ciudadRepository.GetByIdAsync(request.Id,"Pais");
 
             // Convertir datos a DTO
             var data = _mapper.Map<CiudadDto>(ciudad);

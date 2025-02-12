@@ -14,13 +14,15 @@ namespace AbogadosLatam.Application.Features.UseCases.Ciudad
     public class UpdateCiudadCommandHandler : IRequestHandler<UpdateCiudadCommand, int>
     {
         private readonly IMapper _mapper;
-        private readonly ICiudadRepository _ciudadRepository;
-        private readonly IPaisRepository _paisRepository;
+        private readonly ICiudadQueryRepository _ciudadRepository;
+        private readonly ICiudadCommandRepository _ciudadCommandRepository;
+        private readonly IPaisQueryRepository _paisRepository;
 
-        public UpdateCiudadCommandHandler(IMapper mapper, ICiudadRepository ciudadRepository, IPaisRepository paisRepository)
+        public UpdateCiudadCommandHandler(IMapper mapper, ICiudadQueryRepository ciudadRepository, ICiudadCommandRepository ciudadCommandRepository, IPaisQueryRepository paisRepository)
         {
             _mapper = mapper;
             _ciudadRepository = ciudadRepository;
+            _ciudadCommandRepository = ciudadCommandRepository;
             _paisRepository = paisRepository;
         }
 
@@ -46,7 +48,7 @@ namespace AbogadosLatam.Application.Features.UseCases.Ciudad
             _mapper.Map(request, existingCiudad);
 
             // Actualiza la ciudad en el repositorio
-            await _ciudadRepository.UpdateAsync(existingCiudad);
+            await _ciudadCommandRepository.UpdateAsync(existingCiudad);
 
             // Retorna el ID de la ciudad actualizada
             return existingCiudad.Id;

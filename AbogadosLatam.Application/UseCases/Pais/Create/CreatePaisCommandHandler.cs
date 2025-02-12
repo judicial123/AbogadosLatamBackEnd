@@ -9,10 +9,10 @@ namespace AbogadosLatam.Application.Features.UseCases.Pais
 {
     public class CreatePaisCommandHandler : IRequestHandler<CreatePaisCommand, int>
     {
-        private readonly IPaisRepository _paisRepository;
+        private readonly IPaisCommandRepository _paisRepository;
         private readonly IMapper _mapper;
 
-        public CreatePaisCommandHandler(IPaisRepository paisRepository, IMapper mapper)
+        public CreatePaisCommandHandler(IPaisCommandRepository paisRepository, IMapper mapper)
         {
             _paisRepository = paisRepository;
             _mapper = mapper;

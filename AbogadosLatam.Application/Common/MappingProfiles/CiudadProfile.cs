@@ -9,7 +9,10 @@ public class CiudadProfile : Profile
 {
     public CiudadProfile()
     {
-        CreateMap<CiudadDto, Ciudad>().ReverseMap();
+        CreateMap<Ciudad, CiudadDto>()
+            .ForMember(dest => dest.NombrePais, 
+                opt => opt.MapFrom(src => src.Pais != null ? src.Pais.Nombre : string.Empty))
+            .ReverseMap();
         CreateMap<CreateCiudadCommand, Ciudad>().ReverseMap();
         CreateMap<UpdateCiudadCommand, Ciudad>().ReverseMap();
     }

@@ -2,23 +2,21 @@ using FluentValidation;
 using AbogadosLatam.Application.Contracts;
 using AbogadosLatam.Application.Contracts.Persistence;
 using AbogadosLatam.Application.Features.UseCases.Ciudad;
+using AbogadosLatam.Application.UseCases.Ciudad.Common;
 
 namespace AbogadosLatam.Application.Features.UseCases.Ciudad.Validators
 {
     public class UpdateCiudadCommandValidator : AbstractValidator<UpdateCiudadCommand>
     {
-        private readonly IPaisRepository _paisRepository;
-        private readonly ICiudadRepository _ciudadRepository;
+        private readonly IPaisQueryRepository _paisRepository;
+        private readonly ICiudadQueryRepository _ciudadRepository;
 
-        public UpdateCiudadCommandValidator(IPaisRepository paisRepository, ICiudadRepository ciudadRepository)
+        public UpdateCiudadCommandValidator(IPaisQueryRepository paisRepository, ICiudadQueryRepository ciudadRepository)
         {
             _paisRepository = paisRepository;
             _ciudadRepository = ciudadRepository;
             
-            RuleFor(p => p.PaisId)
-                .GreaterThan(0)
-                .MustAsync(PaisMustExist)
-                .WithMessage("{PropertyName} does not exist.");
+            Include(new BaseCiudadCommandValidator(_paisRepository));
             
             RuleFor(p => p.Id)
                 .GreaterThan(0)
@@ -26,11 +24,7 @@ namespace AbogadosLatam.Application.Features.UseCases.Ciudad.Validators
                 .WithMessage("{PropertyName} does not exist.");
         }
         
-        private async Task<bool> PaisMustExist(int id, CancellationToken cancellationToken)
-        {
-            var Pais = await _paisRepository.GetByIdAsync(id);
-            return Pais != null;
-        }
+     
         
         private async Task<bool> CiudadMustExist(int id, CancellationToken cancellationToken)
         {

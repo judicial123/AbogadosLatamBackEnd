@@ -3,4 +3,9 @@ using MediatR;
 
 namespace AbogadosLatam.Application.Features.UseCases.Pais;
 
-public record GetPaisQuery(int Id) : IRequest<PaisDto>;
+public class GetPaisQuery(int id) : IRequest<PaisDto>
+{
+    public int Id { get; set; } = id;
+
+    // Constructor para inicializar con el id
+}

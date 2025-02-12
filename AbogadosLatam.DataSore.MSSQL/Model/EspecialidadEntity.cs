@@ -10,4 +10,7 @@ public class EspecialidadEntity : EFEntity
     public int Id { get; set; }
     public string Nombre { get; set; }
     public string Descripcion { get; set; }
+    
+    // Relación muchos a muchos con Estudio
+    public ICollection<EstudioEspecialidadEntity> EstudioEspecialidades { get; set; }
 }

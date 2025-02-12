@@ -15,4 +15,7 @@ public class EstudioEntity : EFEntity
     public string Descripcion { get; set; } // Descripción del estudio en HTML
 
     public string LogoUrl { get; set; } // URL del logo del estudio
+    
+    // Relación muchos a muchos con Especialidad
+    public ICollection<EstudioEspecialidadEntity> EstudioEspecialidades { get; set; }
 }

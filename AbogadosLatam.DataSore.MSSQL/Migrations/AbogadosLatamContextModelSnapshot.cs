@@ -108,6 +108,35 @@ namespace AbogadosLatam.DataSore.MSSQL.Migrations
                     b.ToTable("Estudios");
                 });
 
+            modelBuilder.Entity("AbogadosLatam.DataSore.MSSQL.Model.EstudioEspecialidadEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("EspecialidadId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EstudioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EspecialidadId");
+
+                    b.HasIndex("EstudioId");
+
+                    b.ToTable("EstudioEspecialidades");
+                });
+
             modelBuilder.Entity("AbogadosLatam.DataSore.MSSQL.Model.PaisEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -211,8 +240,8 @@ namespace AbogadosLatam.DataSore.MSSQL.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2025, 2, 12, 10, 56, 3, 807, DateTimeKind.Local).AddTicks(5780),
-                            DateModified = new DateTime(2025, 2, 12, 10, 56, 3, 807, DateTimeKind.Local).AddTicks(5820),
+                            DateCreated = new DateTime(2025, 2, 12, 15, 5, 3, 515, DateTimeKind.Local).AddTicks(2180),
+                            DateModified = new DateTime(2025, 2, 12, 15, 5, 3, 515, DateTimeKind.Local).AddTicks(2220),
                             Nombre = "Ecuador"
                         });
                 });
@@ -226,6 +255,25 @@ namespace AbogadosLatam.DataSore.MSSQL.Migrations
                         .IsRequired();
 
                     b.Navigation("Pais");
+                });
+
+            modelBuilder.Entity("AbogadosLatam.DataSore.MSSQL.Model.EstudioEspecialidadEntity", b =>
+                {
+                    b.HasOne("AbogadosLatam.DataSore.MSSQL.Model.EspecialidadEntity", "Especialidad")
+                        .WithMany("EstudioEspecialidades")
+                        .HasForeignKey("EspecialidadId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AbogadosLatam.DataSore.MSSQL.Model.EstudioEntity", "Estudio")
+                        .WithMany("EstudioEspecialidades")
+                        .HasForeignKey("EstudioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Especialidad");
+
+                    b.Navigation("Estudio");
                 });
 
             modelBuilder.Entity("AbogadosLatam.DataSore.MSSQL.Model.SucursalEntity", b =>
@@ -245,6 +293,16 @@ namespace AbogadosLatam.DataSore.MSSQL.Migrations
                     b.Navigation("Ciudad");
 
                     b.Navigation("Estudio");
+                });
+
+            modelBuilder.Entity("AbogadosLatam.DataSore.MSSQL.Model.EspecialidadEntity", b =>
+                {
+                    b.Navigation("EstudioEspecialidades");
+                });
+
+            modelBuilder.Entity("AbogadosLatam.DataSore.MSSQL.Model.EstudioEntity", b =>
+                {
+                    b.Navigation("EstudioEspecialidades");
                 });
 
             modelBuilder.Entity("AbogadosLatam.DataSore.MSSQL.Model.PaisEntity", b =>

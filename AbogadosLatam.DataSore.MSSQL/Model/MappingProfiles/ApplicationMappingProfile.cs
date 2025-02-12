@@ -11,6 +11,8 @@ public class ApplicationMappingProfile: Profile
         CreateMap<Ciudad, CiudadEntity>().ReverseMap();
         CreateMap<Especialidad, EspecialidadEntity>().ReverseMap();
         CreateMap<Estudio, EstudioEntity>().ReverseMap();
+        CreateMap<Sucursal, SucursalEntity>().ReverseMap();
+
 
     }
 }

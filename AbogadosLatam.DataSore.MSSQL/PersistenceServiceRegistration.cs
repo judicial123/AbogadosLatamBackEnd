@@ -5,6 +5,7 @@ using AbogadosLatam.DataSore.MSSQL.Model.MappingProfiles;
 using AbogadosLatam.DataSore.MSSQL.Repositories;
 using AbogadosLatam.DataSore.MSSQL.Repositories.Estudio;
 using AbogadosLatam.DataSore.MSSQL.Repositories.Pais;
+using AbogadosLatam.DataSore.MSSQL.Repositories.Sucursal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,6 +34,10 @@ public static class PersistenceServiceRegistration
 
         services.AddScoped<IEstudioCommandRepository, EstudioCommandRepository>();
         services.AddScoped<IEstudioQueryRepository, EstudioQueryRepository>();
+        
+        services.AddScoped<ISucursalCommandRepository, SucursalCommandRepository>();
+        services.AddScoped<ISucursalQueryRepository, SucursalQueryRepository>();
+
 
         return services;
 

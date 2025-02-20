@@ -13,6 +13,7 @@ public class ApplicationMappingProfile: Profile
         CreateMap<Estudio, EstudioEntity>().ReverseMap();
         CreateMap<Sucursal, SucursalEntity>().ReverseMap();
         CreateMap<EstudioEspecialidad, EstudioEspecialidadEntity>().ReverseMap();
+        CreateMap<Abogado, AbogadoEntity>().ReverseMap();
 
 
     }

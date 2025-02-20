@@ -3,6 +3,7 @@ using AbogadosLatam.Application.Contracts.Persistence;
 using AbogadosLatam.DataSore.MSSQL.DataBaseContext;
 using AbogadosLatam.DataSore.MSSQL.Model.MappingProfiles;
 using AbogadosLatam.DataSore.MSSQL.Repositories;
+using AbogadosLatam.DataSore.MSSQL.Repositories.Abogado;
 using AbogadosLatam.DataSore.MSSQL.Repositories.Estudio;
 using AbogadosLatam.DataSore.MSSQL.Repositories.EstudioEspecialidad;
 using AbogadosLatam.DataSore.MSSQL.Repositories.Pais;
@@ -41,6 +42,9 @@ public static class PersistenceServiceRegistration
 
         services.AddScoped<IEstudioEspecialidadCommandRepository, EstudioEspecialidadCommandRepository>();
         services.AddScoped<IEstudioEspecialidadQueryRepository, EstudioEspecialidadQueryRepository>();
+
+        services.AddScoped<IAbogadoCommandRepository, AbogadoCommandRepository>();
+        services.AddScoped<IAbogadoQueryRepository, AbogadoQueryRepository>();
 
         return services;
 

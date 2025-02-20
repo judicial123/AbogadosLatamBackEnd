@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AbogadosLatam.WebAPI.Controllers;
 
-[Authorize]
+//[Authorize]
 [Route("api/[controller]")]
 public class PaisController : ControllerBase
 {

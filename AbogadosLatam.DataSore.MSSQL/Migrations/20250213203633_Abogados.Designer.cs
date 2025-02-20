@@ -4,6 +4,7 @@ using AbogadosLatam.DataSore.MSSQL.DataBaseContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AbogadosLatam.DataSore.MSSQL.Migrations
 {
     [DbContext(typeof(AbogadosLatamContext))]
-    partial class AbogadosLatamContextModelSnapshot : ModelSnapshot
+    [Migration("20250213203633_Abogados")]
+    partial class Abogados
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,11 +50,12 @@ namespace AbogadosLatam.DataSore.MSSQL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
+                    b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UsuarioId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Whatsapp")
@@ -285,8 +289,8 @@ namespace AbogadosLatam.DataSore.MSSQL.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2025, 2, 20, 6, 36, 16, 456, DateTimeKind.Local).AddTicks(8380),
-                            DateModified = new DateTime(2025, 2, 20, 6, 36, 16, 456, DateTimeKind.Local).AddTicks(8430),
+                            DateCreated = new DateTime(2025, 2, 13, 15, 36, 32, 874, DateTimeKind.Local).AddTicks(3450),
+                            DateModified = new DateTime(2025, 2, 13, 15, 36, 32, 874, DateTimeKind.Local).AddTicks(3490),
                             Nombre = "Ecuador"
                         });
                 });
@@ -361,7 +365,9 @@ namespace AbogadosLatam.DataSore.MSSQL.Migrations
 
                     b.HasOne("AbogadosLatam.Identity.Models.ApplicationUser", "Usuario")
                         .WithMany()
-                        .HasForeignKey("UsuarioId");
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Estudio");
 

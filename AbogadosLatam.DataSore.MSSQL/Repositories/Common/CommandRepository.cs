@@ -22,6 +22,9 @@ public class CommandRepository <T,TEntity>: ICommandRepository<T>
         var dbEntity = _mapper.Map<TEntity>(entity);
         _dbContext.Add(dbEntity);
         await _dbContext.SaveChangesAsync();
+
+        // Asignar el ID generado a la entidad original
+        _mapper.Map(dbEntity, entity);
     }
 
     public async Task UpdateAsync(T entity)

@@ -4,6 +4,7 @@ using AbogadosLatam.DataSore.MSSQL.DataBaseContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AbogadosLatam.DataSore.MSSQL.Migrations
 {
     [DbContext(typeof(AbogadosLatamContext))]
-    partial class AbogadosLatamContextModelSnapshot : ModelSnapshot
+    [Migration("20250220113616_deleteNombreFromAbogado")]
+    partial class deleteNombreFromAbogado
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

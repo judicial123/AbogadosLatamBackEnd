@@ -4,6 +4,7 @@ using AbogadosLatam.DataSore.MSSQL.DataBaseContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AbogadosLatam.DataSore.MSSQL.Migrations
 {
     [DbContext(typeof(AbogadosLatamContext))]
-    partial class AbogadosLatamContextModelSnapshot : ModelSnapshot
+    [Migration("20250219200619_UserId")]
+    partial class UserId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,6 +47,10 @@ namespace AbogadosLatam.DataSore.MSSQL.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("FotoUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -285,8 +292,8 @@ namespace AbogadosLatam.DataSore.MSSQL.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2025, 2, 20, 6, 36, 16, 456, DateTimeKind.Local).AddTicks(8380),
-                            DateModified = new DateTime(2025, 2, 20, 6, 36, 16, 456, DateTimeKind.Local).AddTicks(8430),
+                            DateCreated = new DateTime(2025, 2, 19, 15, 6, 18, 716, DateTimeKind.Local).AddTicks(1560),
+                            DateModified = new DateTime(2025, 2, 19, 15, 6, 18, 716, DateTimeKind.Local).AddTicks(1600),
                             Nombre = "Ecuador"
                         });
                 });

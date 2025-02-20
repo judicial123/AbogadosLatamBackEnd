@@ -21,6 +21,7 @@ public class AbogadosLatamContext : DbContext
     public DbSet<SucursalEntity> Sucursales { get; set; }
     
     public DbSet<EstudioEspecialidadEntity> EstudioEspecialidades { get; set; }
+    public DbSet<AbogadoEntity> Abogados { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

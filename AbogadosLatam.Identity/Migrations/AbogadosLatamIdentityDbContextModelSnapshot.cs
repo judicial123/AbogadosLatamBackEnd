@@ -99,7 +99,7 @@ namespace AbogadosLatam.Identity.Migrations
                         {
                             Id = "8e445865-a24d-4543-a6c6-9443d048cdb9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "834c2d0a-80f3-4537-a015-f24958460b4e",
+                            ConcurrencyStamp = "05a84410-af3a-4021-aa9c-ff2bd43de14d",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "System",
@@ -107,9 +107,9 @@ namespace AbogadosLatam.Identity.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "admin@admin.com",
                             NormalizedUserName = "admin@admin.com",
-                            PasswordHash = "AQAAAAIAAYagAAAAEP36cOWaV2XrmJWQpXw2UI44I0EtFW43ABg1qBs0mQShGXe9qm63K6Rj+Fd9W26IXQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEmO28q5rCJPQ3+RaqdCJbtgaPSZVc8/gSwQxZVo6ZkLTbfZi0XkmAi0grc6BC+AhA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "aa95008e-b962-437a-b21b-aaf8c2551346",
+                            SecurityStamp = "c5f15b54-743f-4ed1-b363-2d4f5caa8ead",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com"
                         },
@@ -117,7 +117,7 @@ namespace AbogadosLatam.Identity.Migrations
                         {
                             Id = "9e224968-33e4-4652-b7b7-8574d048cdb9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "11a9dd79-df85-4359-9ade-6ed65750a8d2",
+                            ConcurrencyStamp = "de01e522-ca22-4231-9857-4050a4995f17",
                             Email = "user@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
@@ -125,9 +125,9 @@ namespace AbogadosLatam.Identity.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@LOCALHOST.COM",
                             NormalizedUserName = "USER@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMapfTy8to86r1J5O/BRNWLMxPgEZnoMVp4lU3TTNxmVSCwxSVSX3W5eOvJK9uDshA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDk2+RmIZyLDkelFHHSrhewCfqobpdVemWCzYI7NSqhAipddkKVsIP3YxVEvdS1ipw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8385975d-10d1-447f-856e-94c305d25d4a",
+                            SecurityStamp = "db0f960f-79c2-4ae7-bbfd-fff01958a2f8",
                             TwoFactorEnabled = false,
                             UserName = "user@localhost.com"
                         });
@@ -163,8 +163,8 @@ namespace AbogadosLatam.Identity.Migrations
                         new
                         {
                             Id = "cac43a6e-f7bb-4448-baaf-1add431ccbbf",
-                            Name = "PROVEEDOR",
-                            NormalizedName = "PROVEEDOR"
+                            Name = "ABOGADO",
+                            NormalizedName = "ABOGADO"
                         },
                         new
                         {

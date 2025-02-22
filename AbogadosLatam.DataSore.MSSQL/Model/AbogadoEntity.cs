@@ -23,5 +23,4 @@ public class AbogadoEntity : EFEntity
 
     // Relación con Identity Framework (Usuario)
     public string UserId { get; set; }
-    public ApplicationUser Usuario { get; set; } // Relación con AspNetUsers
 }

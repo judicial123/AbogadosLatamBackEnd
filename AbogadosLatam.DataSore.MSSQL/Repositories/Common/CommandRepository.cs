@@ -20,6 +20,9 @@ public class CommandRepository <T,TEntity>: ICommandRepository<T>
     public async Task CreateAsync(T entity)
     {
         var dbEntity = _mapper.Map<TEntity>(entity);
+        
+        Console.WriteLine($"Datos antes de guardar: {System.Text.Json.JsonSerializer.Serialize(dbEntity)}");
+
         _dbContext.Add(dbEntity);
         await _dbContext.SaveChangesAsync();
 

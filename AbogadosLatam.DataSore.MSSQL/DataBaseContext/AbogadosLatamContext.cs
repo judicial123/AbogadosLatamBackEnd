@@ -1,6 +1,7 @@
 using AbogadosLatam.DataSore.MSSQL.Model;
 using AbogadosLatam.Domain;
 using AbogadosLatam.Domain.Common;
+using AbogadosLatam.Identity.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
@@ -22,12 +23,13 @@ public class AbogadosLatamContext : DbContext
     
     public DbSet<EstudioEspecialidadEntity> EstudioEspecialidades { get; set; }
     public DbSet<AbogadoEntity> Abogados { get; set; }
+    public DbSet<ClienteEntity> Clientes { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(AbogadosLatamContext).Assembly);
-
+        
         modelBuilder.Entity<Pais>().HasData(
             new Pais
             {

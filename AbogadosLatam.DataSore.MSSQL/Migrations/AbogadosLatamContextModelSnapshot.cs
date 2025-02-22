@@ -51,9 +51,6 @@ namespace AbogadosLatam.DataSore.MSSQL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UsuarioId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Whatsapp")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -61,8 +58,6 @@ namespace AbogadosLatam.DataSore.MSSQL.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("EstudioId");
-
-                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Abogados");
                 });
@@ -93,6 +88,57 @@ namespace AbogadosLatam.DataSore.MSSQL.Migrations
                     b.HasIndex("PaisId");
 
                     b.ToTable("Ciudades");
+                });
+
+            modelBuilder.Entity("AbogadosLatam.DataSore.MSSQL.Model.ClienteEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DocumentoIdentidad")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EstadoCivil")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("FechaNacimiento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FotoUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Notas")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("PaisId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Telefono")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PaisId");
+
+                    b.ToTable("Clientes");
                 });
 
             modelBuilder.Entity("AbogadosLatam.DataSore.MSSQL.Model.EspecialidadEntity", b =>
@@ -285,70 +331,10 @@ namespace AbogadosLatam.DataSore.MSSQL.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2025, 2, 20, 6, 36, 16, 456, DateTimeKind.Local).AddTicks(8380),
-                            DateModified = new DateTime(2025, 2, 20, 6, 36, 16, 456, DateTimeKind.Local).AddTicks(8430),
+                            DateCreated = new DateTime(2025, 2, 22, 8, 34, 39, 78, DateTimeKind.Local).AddTicks(550),
+                            DateModified = new DateTime(2025, 2, 22, 8, 34, 39, 78, DateTimeKind.Local).AddTicks(590),
                             Nombre = "Ecuador"
                         });
-                });
-
-            modelBuilder.Entity("AbogadosLatam.Identity.Models.ApplicationUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ApplicationUser");
                 });
 
             modelBuilder.Entity("AbogadosLatam.DataSore.MSSQL.Model.AbogadoEntity", b =>
@@ -359,19 +345,24 @@ namespace AbogadosLatam.DataSore.MSSQL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AbogadosLatam.Identity.Models.ApplicationUser", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId");
-
                     b.Navigation("Estudio");
-
-                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("AbogadosLatam.DataSore.MSSQL.Model.CiudadEntity", b =>
                 {
                     b.HasOne("AbogadosLatam.DataSore.MSSQL.Model.PaisEntity", "Pais")
                         .WithMany("Ciudades")
+                        .HasForeignKey("PaisId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Pais");
+                });
+
+            modelBuilder.Entity("AbogadosLatam.DataSore.MSSQL.Model.ClienteEntity", b =>
+                {
+                    b.HasOne("AbogadosLatam.DataSore.MSSQL.Model.PaisEntity", "Pais")
+                        .WithMany()
                         .HasForeignKey("PaisId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

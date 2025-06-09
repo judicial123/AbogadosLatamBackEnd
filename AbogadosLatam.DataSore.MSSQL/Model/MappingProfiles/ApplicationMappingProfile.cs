@@ -1,4 +1,5 @@
 using AbogadosLatam.Domain;
+using AbogadosLatam.DataSore.MSSQL.Model;
 using AutoMapper;
 
 namespace AbogadosLatam.DataSore.MSSQL.Model.MappingProfiles;
@@ -15,6 +16,7 @@ public class ApplicationMappingProfile: Profile
         CreateMap<EstudioEspecialidad, EstudioEspecialidadEntity>().ReverseMap();
         CreateMap<Abogado, AbogadoEntity>().ReverseMap();
         CreateMap<Cliente, ClienteEntity>().ReverseMap();
+        CreateMap<Perro, PerroEntity>().ReverseMap();
 
     }
 }

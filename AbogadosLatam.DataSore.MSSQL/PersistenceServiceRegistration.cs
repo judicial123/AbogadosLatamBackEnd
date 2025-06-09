@@ -9,6 +9,7 @@ using AbogadosLatam.DataSore.MSSQL.Repositories.Estudio;
 using AbogadosLatam.DataSore.MSSQL.Repositories.EstudioEspecialidad;
 using AbogadosLatam.DataSore.MSSQL.Repositories.Pais;
 using AbogadosLatam.DataSore.MSSQL.Repositories.Sucursal;
+using AbogadosLatam.DataSore.MSSQL.Repositories.Perro;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -46,9 +47,12 @@ public static class PersistenceServiceRegistration
 
         services.AddScoped<IAbogadoCommandRepository, AbogadoCommandRepository>();
         services.AddScoped<IAbogadoQueryRepository, AbogadoQueryRepository>();
-        
+
         services.AddScoped<IClienteCommandRepository, ClienteCommandRepository>();
         services.AddScoped<IClienteQueryRepository, ClienteQueryRepository>();
+
+        services.AddScoped<IPerroCommandRepository, PerroCommandRepository>();
+        services.AddScoped<IPerroQueryRepository, PerroQueryRepository>();
 
         return services;
 
